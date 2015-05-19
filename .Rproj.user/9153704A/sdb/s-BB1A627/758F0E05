@@ -1,0 +1,17 @@
+{
+    "contents" : "##function run_analysis\n##ASIGNMENT:\n##You should create one R script called run_analysis.R that does the following. \n##1.Merges the training and the test sets to create one data set.\n##2.Extracts only the measurements on the mean and standard deviation for each measurement. \n##3.Uses descriptive activity names to name the activities in the data set\n##4.Appropriately labels the data set with descriptive variable names. \n##5.From the data set in step 4, creates a second, independent tidy data set with the average \n##of each variable for each activity and each subject.\n\nrun_analysis <- function(){\n        \n        ##Adquire Data\n        dataSet <- adquireData()\n        fileDestiny\n        \n        ##Merge training and test sets\n        \n        \n#directory        \n}\n\nadquireData <- function(fileUrl = \"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip\"){\n        \n        fileZip <- \"./temp.zip\"\n        download.file(fileUrl, fileZip)\n        unzip(fileZip)\n        file.remove(fileZip)\n        dirPath <- \"./UCI HAR Dataset\"\n        #unlink(dirPath, recursive = TRUE)\n        testPath <- paste(dirPath,\"test\", sep = \"/\")\n        dir(testPath)\n        dataTest <- read.table(paste(testPath,\"x_test.txt\", sep = \"/\"))\n        dataTestY <- read.table(paste(testPath,\"y_test.txt\", sep = \"/\"))\n        dataTestSub <- read.table(paste(testPath,\"subject_test.txt\", sep = \"/\"))\n        \n}",
+    "created" : 1432056356241.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2459571994",
+    "id" : "758F0E05",
+    "lastKnownWriteTime" : 1432058681,
+    "path" : "D:/Privado/repos/3.GettingAndCleaningData/CourseProject/run_analysis.R",
+    "project_path" : "run_analysis.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
