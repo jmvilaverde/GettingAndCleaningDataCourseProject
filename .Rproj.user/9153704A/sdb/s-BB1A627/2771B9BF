@@ -1,0 +1,17 @@
+{
+    "contents" : "## CodeBook\n# Getting and Cleaning Data - Course Project\n\n1. Adquire data: run_analysis.R -> function adquireData()\n\n\n\n\n1.Merges the training and the test sets to create one data set.\n2.Extracts only the measurements on the mean and standard deviation for each measurement. \n3.Uses descriptive activity names to name the activities in the data set\n4.Appropriately labels the data set with descriptive variable names. \n5.From the data set in step 4, creates a second, independent tidy data set with the average \nof each variable for each activity and each subject.",
+    "created" : 1432120739622.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2473033205",
+    "id" : "2771B9BF",
+    "lastKnownWriteTime" : 1432120840,
+    "path" : "D:/Privado/repos/3.GettingAndCleaningData/CourseProject/CodeBook.md",
+    "project_path" : "CodeBook.md",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "markdown"
+}
