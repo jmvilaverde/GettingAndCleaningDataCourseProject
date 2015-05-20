@@ -1,0 +1,16 @@
+{
+    "contents" : "# GettingAndCleaningDataCourseProject\nRepository containing code for Getting and Cleaning Data Course Project\n\n\n\n1. Adquire data: run_analysis.R -> function adquireData()\n\n\n\n\n1.Merges the training and the test sets to create one data set.\n2.Extracts only the measurements on the mean and standard deviation for each measurement. \n3.Uses descriptive activity names to name the activities in the data set\n4.Appropriately labels the data set with descriptive variable names. \n5.From the data set in step 4, creates a second, independent tidy data set with the average \nof each variable for each activity and each subject.",
+    "created" : 1432123566483.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1747853039",
+    "id" : "D8F6847D",
+    "lastKnownWriteTime" : 1432127579,
+    "path" : "D:/Privado/repos/3.GettingAndCleaningData/CourseProject/README.md",
+    "project_path" : "README.md",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "markdown"
+}
