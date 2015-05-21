@@ -1,5 +1,6 @@
 ## CodeBook
 ### Getting and Cleaning Data - Course Project
+#### by jmvilaverde
 
 ***
 
@@ -49,18 +50,17 @@
 
 ***
 
-##Transformation
-###In order
+##Complete procedure
 
-####Call to function run_analysis
+####0.Call to function run_analysis()
 
 ***
 
-####1. Call to function adquireData() -> Adquire files and unzip it
+####1.Call to function adquireData() -> Adquire files and unzip it
 
-> ####1.1. Download zip file from "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+> ####1.1.Download zip file from "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 
-> ####1.2. Unzip the file in work directory creates a directory: "/UCI HAR Dataset" with the structure: 
+> ####1.2.Unzip the file in work directory creates a directory: "/UCI HAR Dataset" with the structure: 
 > 
 > directory     | file
 > ------------- | -------------
@@ -77,9 +77,9 @@
 
 ####2.Call to function fileToData() -> Conversion from file to Data
 
-> ####2.1. Call to function: getLabels() -> Get labels for X files and names for Activities
+> ####2.1.Call to function: getLabels() -> Get labels for X files and names for Activities
 
-> ####2.1.1. Get data from File features.txt into Data Frame features
+> ####2.1.1.Get data from File features.txt into Data Frame features
 > 
 > from File                               | to Data Frame | Data Frame dimension [rows x columns] | Data Frame Columns names
 > --------------------------------------- | ------------- | ------------------------------------- | ------------------------
@@ -98,7 +98,7 @@
 > features   | V2              | Feature_Label
 
 
-> ####2.1.2. Get data from File activity_labels.txt into Data Frame activity_labels
+> ####2.1.2.Get data from File activity_labels.txt into Data Frame activity_labels
 > 
 > from File                            | to Data Frame   | Data Frame dimension [rows x columns] | Data Frame Columns names
 > ------------------------------------ | --------------- | ------------------------------------- | ------------------------
@@ -109,7 +109,7 @@
 > --------------- | -------------
 > features        | V1, V2
  
-> ####2.1.3. Rename column names of activity_labels
+> ####2.1.3.Rename column names of activity_labels
 > 
 > Data Frame      | Old column name | New column name
 > --------------- | --------------- | ---------------
@@ -118,26 +118,26 @@
 
 > ####2.2.Obtains data from files of Train and Test and stores into a Data Frame
 > 
-> ####2.2.1. Get data from Test
+> ####2.2.1.Get data from Test
 > 
-> ####2.2.1.1. Set path for Test files and final part of file names 
+> ####2.2.1.1.Set path for Test files and final part of file names 
 > 
 > variable | value stored
 > -------- | ----------------------
 > testPath | "/UCI HAR Dataset/test/""
 > extTest  | "_test.txt""
  
-> ####2.2.1.2. Call function getDataSet() to extract Test data from files to Data Frame dataTest
+> ####2.2.1.2.Call function getDataSet() to extract Test data from files to Data Frame dataTest
         
 > dataTest <- getDataSet(testPath, extTest)
 
-> ####2.2.1.2.1. Obtains data from files and sets the column names
+> ####2.2.1.2.1.Obtains data from files and sets the column names
 >
 > from File                              | to Data Frame | Data Frame dimension [rows x columns] | Data Frame Columns names
 > -------------------------------------- | ------------- | ------------------------------------- | ------------------------
-> /UCI HAR Dataset/test/X_Test.txt       | dataX         | 2947 x 561                            | features$Feature_Label
-> /UCI HAR Dataset/test/y_Test.txt       | dataY         | 2947 x 1                              | "Id_Activity"
-> /UCI HAR Dataset/test/subject_Test.txt | dataSub       | 2947 x 1                              | "Subject"
+> /UCI HAR Dataset/test/X_test.txt       | dataX         | 2947 x 561                            | features$Feature_Label
+> /UCI HAR Dataset/test/y_test.txt       | dataY         | 2947 x 1                              | "Id_Activity"
+> /UCI HAR Dataset/test/subject_test.txt | dataSub       | 2947 x 1                              | "Subject"
 
 > Values of features$Feature_Label
 >
@@ -331,7 +331,7 @@
 
 
 
-> ####2.2.1.2.2. Filter data by columns names that only contains "mean" and "std",
+> ####2.2.1.2.2.Filter data by columns names that only contains "mean" and "std",
 > 
 > from Data Frame | Filter                                      | to Data Frame  | Data Frame dimension [rows x columns]
 > --------------- | ------------------------------------------- | -------------- | -------------------------------------
@@ -373,7 +373,7 @@
 
 
 
-> ####2.2.1.2.3. Merges activity Id with his activity name
+> ####2.2.1.2.3.Merges activity Id with his activity name
 >
 > from Data Frame A | Data Frame A ID | from Data Frame B | Data Frame B ID | to Data Frame  | Data Frame dimension [rows x columns] | Header
 > ----------------- | --------------- | ----------------- | --------------- | -------------- | ------------------------------------- | ---------------------------
@@ -381,61 +381,126 @@
 >
 > INNER JOIN between dataY.Id_Activity = activity_labels.Id
         
-> ####2.2.1.2.4. merges together the three datasets = X + y + subject
+> ####2.2.1.2.4.Merges together the three datasets = X + y + subject
 > 
 > form Data Frame A | from Data Frame B | from Data Frame C | to Data Frame | Data Frame dimension [rows x columns] | Header
 > ----------------- | ----------------- | ----------------- | ------------- | ------------------------------------- | ------
-> dataXOptimized    | dataYCompleted
+> dataXOptimized    | dataYCompleted    | dataSub           | data          | 2947 x 82                             | 
+>
+> Header of Data Frame data: Header from dataOptimizer + Header from dataYcompleted ("Id_Activity", "Activity_Label") + Header from dataSub ("Subject")
+>
+> This merge add columns but keeps rows (cbind)
 
-
-        #Merge the three datasets
-        data <- cbind(, , dataSub)
         
-> ####2.2.1.2.5. return the complete data sets
+> ####2.2.1.2.5.Return the complete data sets
+>
+> data
 
+> ####2.2.2.Get data from Train
+> 
+> ####2.2.2.1.Set path for Train files and final part of file names 
+> 
+> variable | value stored
+> -------- | ----------------------
+> trainPath | "/UCI HAR Dataset/train/""
+> extTrain  | "_train.txt""
+ 
+> ####2.2.2.2.Call function getDataSet() to extract Train data from files to Data Frame dataTrain
+        
+> dataTrain <- getDataSet(trainPath, extTrain)
+
+> ####2.2.2.2.1.Obtains data from files and sets the column names
+>
+> from File                               | to Data Frame | Data Frame dimension [rows x columns] | Data Frame Columns names
+> --------------------------------------- | ------------- | ------------------------------------- | ------------------------
+> /UCI HAR Dataset/test/X_train.txt       | dataX         | 7352 x 561                            | features$Feature_Label
+> /UCI HAR Dataset/test/y_train.txt       | dataY         | 7352 x 1                              | "Id_Activity"
+> /UCI HAR Dataset/test/subject_train.txt | dataSub       | 7352 x 1                              | "Subject"
+
+> Values of features$Feature_Label (Same that in 2.2.1.2.1)
+
+
+> ####2.2.2.2.2.Filter data by columns names that only contains "mean" and "std",
+> 
+> from Data Frame | Filter                                      | to Data Frame  | Data Frame dimension [rows x columns]
+> --------------- | ------------------------------------------- | -------------- | -------------------------------------
+> dataX           | columns names that contains "mean" or "std" | dataXOptimized | 7352 x 79
+>
+> 
+> Note: It's possible to quit "meanFreq", but I consider it as a "mean"
+
+> Columns names that contains "mean" or "std" (Same that in 2.2.1.2.2)
+
+> ####2.2.2.2.3.Merges activity Id with his activity name
+>
+> from Data Frame A | Data Frame A ID | from Data Frame B | Data Frame B ID | to Data Frame  | Data Frame dimension [rows x columns] | Header
+> ----------------- | --------------- | ----------------- | --------------- | -------------- | ------------------------------------- | ---------------------------
+> dataY             | Id_Activity     | activity_labels   | Id              | dataYCompleted | 7352 x 2                              | Id_Activity, Activity_Label
+>
+> INNER JOIN between dataY.Id_Activity = activity_labels.Id
+        
+> ####2.2.2.2.4.Merges together the three datasets = X + y + subject
+> 
+> form Data Frame A | from Data Frame B | from Data Frame C | to Data Frame | Data Frame dimension [rows x columns] | Header
+> ----------------- | ----------------- | ----------------- | ------------- | ------------------------------------- | ------
+> dataXOptimized    | dataYCompleted    | dataSub           | data          | 7352 x 82                             | 
+>
+> Header of Data Frame data: Header from dataOptimizer + Header from dataYcompleted ("Id_Activity", "Activity_Label") + Header from dataSub ("Subject")
+>
+> This merge add columns but keeps rows (cbind)
+
+        
+> ####2.2.2.2.5.Return the complete data sets
+>
+> data
+
+> ####2.3.Merges together the datasets = dataTest + dataTrain
+> 
+> form Data Frame A | from Data Frame B | to Data Frame | Data Frame dimension [rows x columns] | Header
+> ----------------- | ----------------- | ------------- | ------------------------------------- | ------
+> dataTest          | dataTrain         | dataComplete  | 10299 x 82                            | 
+>
+> Header of Data Frame dataComplete: Same header as dataTest and dataTrain (See Header description in 2.2.1.2.4 or 2.2.2.2.4)
+>
+> This merge add rows but keeps columns (rbind)
+
+> ####2.4.Returns Data Frame dataComplete
 
 ***
-        #Same operation with train files
-        trainPath <- paste(path,"train/", sep = "/")
-        extTrain <- "_train.txt"
-        dataTrain <- getDataSet(trainPath, extTrain)
-        
-        #Merge Test and Train data sets in only one data set
-        dataComplete <<- rbind(dataTest, dataTrain)
-        dataComplete
- 
- 
-        #Obtains Data set of averages per value grouped by Subject and Activity
-        dataAverage <- getDataSetAverage(dataComplete)
-        
-        #save set to a file
-        saveDataToFile(dataAverage)
-}
 
+####3.Call to function getDataSetAverage() and store result in dataAverage
+####-> Obtains Data set of averages per value grouped by Subject and Activity from dataComplete
 
+> ####3.1.Obtains the mean for each column from 1 to 79, group by Subject and Activity_label
+>
+> from Data Frame | column group1 | column group2  | column values                                         | function to apply each column | to Data Frame | Data Frame dimension [rows x columns]
+> --------------- | ------------- | -------------- | ----------------------------------------------------- | ----------------------------- | ------------- | --------------------------------
+> dataComplete    | Subject       | Activity_Label | "tBodyAcc.mean...X":"fBodyBodyGyroJerkMag.meanFreq.." | mean                          | data          | 40 x 81
+>
+>
+> ####3.2.Rename column names of data
+> 
+> Data Frame | Old column name | New column name
+> ---------- | --------------- | ---------------
+> data       | Group.1         | Subject
+> data       | Group.2         | Activity        
+>
+>
+> ####3.3.Order data by Subject and Activity
+>
+> from Data Frame | Order by          | to Data Frame
+> --------------- | ----------------- | -------------
+> data            | Subject, Activity | data
+>
+>
+> ####3.4Return data
 
+***
 
+####4. Call to function saveDataToFile() -> save set to a file
 
-##Function to get average from each values group by value label, Subject and Activity
-
-getDataSetAverage <- function(dataSet){
-        
-        #Obtains the mean for each column from 1 to 79 group by Subject and Activity_label
-        data <- aggregate(dataComplete[,1:79], list(dataComplete$Subject, dataComplete$Activity_Label), mean)
-        
-        #Rename columns Group.1 and Group.2 to Subject and Activity
-        data <- rename(data, Subject = Group.1, Activity = Group.2)
-        
-        #Order data by Subject and Activity
-        data <- arrange(data, Subject, Activity)
-        
-        data
-}
-
-##Function to save data to a file
-
-saveDataToFile <- function(dataToSave){
-        #save table to file tidyData.txt
-        write.table(dataToSave, file="tidyData.txt", row.name=FALSE)
-        datos <<- read.table("tidyData.txt",header=TRUE)
-}
+> Save the data into a file
+>
+> from Data Frame | to File
+> --------------- | -------
+> dataToSave      | "tidyData.txt"

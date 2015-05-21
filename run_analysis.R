@@ -71,7 +71,7 @@ fileToData <- function(path = "./UCI HAR Dataset"){
         dataTrain <- getDataSet(trainPath, extTrain)
         
         #Merge Test and Train data sets in only one data set
-        dataComplete <<- rbind(dataTest, dataTrain)
+        dataComplete <- rbind(dataTest, dataTrain)
         dataComplete
         
 }
@@ -118,7 +118,7 @@ getDataSet <- function(path, ext){
         
         #Complete data from Y with the name for activities
         #Inner join between dataY and activity_labels to obtain the Activity names for each Id
-        dataYCompleted <<- merge(dataY, activity_labels, by.x="Id_Activity", by.y="Id")
+        dataYCompleted <- merge(dataY, activity_labels, by.x="Id_Activity", by.y="Id")
         
         #Merge the three datasets
         data <- cbind(dataXOptimized, dataYCompleted, dataSub)
@@ -147,5 +147,4 @@ getDataSetAverage <- function(dataSet){
 saveDataToFile <- function(dataToSave){
         #save table to file tidyData.txt
         write.table(dataToSave, file="tidyData.txt", row.name=FALSE)
-        datos <<- read.table("tidyData.txt",header=TRUE)
 }
