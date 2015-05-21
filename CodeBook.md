@@ -4,6 +4,11 @@
 
 ***
 
+####Additional Data Information:
+> http://archive.ics.uci.edu/ml/machine-learning-databases/00240/UCI%20HAR%20Dataset.names
+
+***
+
 ##Data Files
 
 > Zip file getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
