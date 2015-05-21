@@ -36,10 +36,10 @@
 
 > Main function, calls to:
 >
-> * adquireFile to download the file and unzip it
-> * fileToData to extract the data from files
-> * getDataSetAverage to transform the data to a data Set of averages per each value and each Subject and each Activity
-> * saveDataToFile to save the data set of averages into a tidyData.txt file
+> * adquireFile() to download the file and unzip it
+> * fileToData() to extract the data from files
+> * getDataSetAverage() to transform the data to a data Set of averages per each value and each Subject and each Activity
+> * saveDataToFile() to save the data set of averages into a tidyData.txt file
 
 ***
 
@@ -50,8 +50,6 @@
 >
 > * fileUrl         (default value: "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip")
 > * unzipPath       (default value: "./UCI HAR Dataset")
-
-***
 
 > This function checks if exists the zip File and the directory with the files, 
 > if it doesn't exists dowload the files and uncompress the files.
@@ -90,7 +88,7 @@
 > * ext             (no default values)
 
 > Obtains data from files X_????.txt, y_????.txt and subject_????.txt, sets the column names, 
-> filter columns that only contains "mean" and "std", merges activity Id with his activity name, 
+> filter columns that only contains "mean" or "std", merges activity Id with his activity name, 
 > merges together the three datasets = X + y + subject and return the complete data sets
 
 ***

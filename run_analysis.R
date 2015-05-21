@@ -30,6 +30,9 @@ run_analysis <- function(){
         
         #save set to a file
         saveDataToFile(dataAverage)
+        
+        #Return dataAverage
+        dataAverage
 }
 
 ##Function to adquire the files
@@ -56,7 +59,7 @@ fileToData <- function(path = "./UCI HAR Dataset"){
         #Get labels for X_???.txt columns and activity list labels
         getLabels(path)
         
-        #Set path for test files, final part of the name and calls function getDataSet to extract
+        #Set path for test files, final part of file names and calls function getDataSet to extract
         #data from the files
         testPath <- paste(path,"test/", sep = "/")
         extTest <- "_test.txt"
@@ -90,7 +93,7 @@ getLabels <- function(path = "./UCI HAR Dataset"){
 
 #Obtains data from files, 
 #sets the column names, 
-#filter columns that only contains "mean" and "std",
+#filter columns that only contains "mean" or "std",
 #merges activity Id with his activity name
 #merges together the three datasets = X + y + subject
 #return the complete data sets
@@ -109,7 +112,7 @@ getDataSet <- function(path, ext){
         #set col name to Subject
         dataSub <- read.table(paste(path,"subject", ext, sep = ""), col.names = "Subject")
         
-        #Obtain only data with "mean" or "str" contained into column label for dataX
+        #Obtain only data with "mean" or "std" contained into column label for dataX
         #It's possible to quit "meanFreq", but I consider it as a "mean"
         dataXOptimized <- dataX[,grepl(pattern="mean", x = names(dataX))|grepl(pattern="std", x = names(dataX))]
         
