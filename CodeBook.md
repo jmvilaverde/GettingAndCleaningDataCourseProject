@@ -32,11 +32,11 @@
 > 
 > Test set:
 > 
-> file                  | Columns       | Rows          | Header
-> --------------------- | ------------- | ------------- | ----------
-> X_test.txt            | 561           | 2947          | no header
-> Y_test.txt            | 1             | 2947          | no header
-> subject_test.txt      | 1             | 2947          | no header
+> file                  | Rows | Columns | Header
+> --------------------- | ---- | ------- | ---------
+> X_test.txt            | 2947 | 561     | no header
+> Y_test.txt            | 2947 | 1       | no header
+> subject_test.txt      | 2947 | 1       | no header
 >
 > Training set:
 >
