@@ -98,7 +98,7 @@
 
 > 1 parameter:
 > 
-> * dataSet         (no default values)
+> * dataComplete         (no default values)
 
 > Obtains the mean for each column group by Subject and Activity_label and format resultant data set
 

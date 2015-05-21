@@ -128,7 +128,7 @@ getDataSet <- function(path, ext){
 
 ##Function to get average from each values group by value label, Subject and Activity
 
-getDataSetAverage <- function(dataSet){
+getDataSetAverage <- function(dataComplete){
         
         #Obtains the mean for each column from 1 to 79 group by Subject and Activity_label
         data <- aggregate(dataComplete[,1:79], list(dataComplete$Subject, dataComplete$Activity_Label), mean)
